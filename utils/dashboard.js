@@ -36,7 +36,7 @@ const getDashboardMiracles = function (db, limit) {
 	return new Promise((resolve) => {
 		try {
 			const collection = db.collection('miracles');
-			collection.find({}).limit(limit).toArray(function (err, docs) {
+			collection.find({}).sort( { created: -1 } ).limit(limit).toArray(function (err, docs) {
 				assert.equal(err, null);
 				console.log("Query some documents for dashboard");
 				resolve(docs);
