@@ -1,0 +1,41 @@
+nav.sidenav.shadow-right(class=sidenavStyle)
+        
+    .sidenav-menu
+        
+        .nav.accordion#accordionSidenav
+    
+            .sidenav-menu-heading
+                | Main
+                
+            a.nav-link(href='/home')
+                .nav-link-icon
+                    i(data-feather='home')
+                | Home
+
+            a.nav-link(href='/miracles')
+                .nav-link-icon
+                    i(data-feather='zap')
+                | Miracle Mile
+                span.badge.badge-primary.ml-2 New!
+
+            
+     
+        
+                            
+            .sidenav-menu-heading
+                | Other
+            
+            a.nav-link(href='/founder')
+                .nav-link-icon
+                    i(data-feather='star')
+                | Founder's story
+
+            a.nav-link(href='javascript:void(0);', data-toggle='modal' data-target='#giveFeedback' aria-expanded='false')
+                .nav-link-icon
+                    i(data-feather='send')
+                | Give feedback
+
+            a.nav-link(href='/contact')
+                .nav-link-icon
+                    i(data-feather='mail')
+                | Contact us
