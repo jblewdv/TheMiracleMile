@@ -1,0 +1,57 @@
+extends ../layouts/miracles-layout.pug
+
+block config
+    - var bodyClass = 'nav-fixed'
+    - var pageTitle = 'Home'
+    - var pageIcon = 'activity'
+    - var sidenavStyle = 'sidenav-light'
+    - var topnavStyle = 'navbar-light bg-white'
+    - var footerStyle = 'footer-light'
+
+block content
+
+    .container-fluid.mt-5
+               
+
+        .alert.alert-primary.border-0.mb-4.mt-5.px-md-5
+            .position-relative
+                .row.align-items-center.justify-content-between
+                    .col.position-relative
+                        h2.text-primary Welcome to The Miracle Mile!
+                        p.text-gray-700 A place to see how God is working in people's lives, gain spiritual inspiration, and share how God has touched your life.
+                        a.btn.btn-teal(href='/miracles')
+                            | Check it out
+                            i.ml-1(data-feather='arrow-right')
+                    .col.d-none.d-md-block.text-right.pt-3
+                        img.img-fluid.mt-n5(src='assets/img/homepage/heartworld.svg', style='max-width: 20rem;')
+        
+
+        .row
+           
+            .col-md-6
+                .card.card-icon
+                    .row.no-gutters
+                        .col-auto.card-icon-aside.bg-primary
+                            img(src='assets/img/homepage/search.svg', heigth='54px', width='54px')
+                            //- i.mr-1.text-white-50(data-feather='zap')
+                        .col
+                            .card-body.py-5
+                                h5.card-title Find miracles
+                                p.card-text
+                                    | Read stories of how the Lord has touched people's lives. Grow your spiritual inspiration by visualizing His power or simply find comfort in His work.
+
+            
+
+            .col-md-6
+                .card.card-icon
+                    .row.no-gutters
+                        .col-auto.card-icon-aside.bg-primary
+                            img(src='assets/img/homepage/send.svg', heigth='54px', width='54px')
+                            //- i.mr-1.text-white-50(data-feather='send')
+                        .col
+                            .card-body.py-5
+                                h5.card-title Share miracles
+                                p.card-text
+                                    | Has the Lord touched your life or someone you know? Help others by sharing your story and spreading hope to those that need it most.
+
+append scripts

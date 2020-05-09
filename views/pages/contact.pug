@@ -1,0 +1,23 @@
+extends ../layouts/miracles-layout.pug
+
+block config
+    - var bodyClass = 'nav-fixed'
+    - var pageTitle = 'Contact us'
+    - var pageIcon = 'activity'
+    - var sidenavStyle = 'sidenav-light'
+    - var topnavStyle = 'navbar-light bg-white'
+    - var footerStyle = 'footer-light'
+
+block content
+
+    .container-fluid.mt-5
+        .card
+            .card-header Contact us
+            .card-body 
+                | If you'd like to contact me regarding The Miracle Mile, please use the Give Feedback buttons and post a comment. For all other inquires, complaints, or request feel free to email me at 
+                a.alert-link(href='javascript:void(0);') jblew.business@gmail.com. 
+                | Thanks!
+               
+
+        
+append scripts

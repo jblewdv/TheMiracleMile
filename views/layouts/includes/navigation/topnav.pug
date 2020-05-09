@@ -1,0 +1,24 @@
+nav(class=['topnav', 'navbar', 'navbar-expand', 'shadow'] class=topnavStyle)#sidenavAccordion
+
+    //- Navbar Brand Image or Text
+    img(src='/assets/img/favicon/rainbow.png', heigth='24px', width='24px', style='margin-left: 20px;')
+    a.navbar-brand.d-none.d-sm-block(href='/')
+        | The Miracle Mile
+        
+
+    //- Sidenav Toggle Button
+    button#sidebarToggle.btn.btn-icon.btn-transparent-dark.order-1.order-lg-0.mr-lg-2(href='#')
+        i(data-feather='menu')
+
+    //- Navbar Search
+    form.form-inline.mr-auto.d-none.d-lg-block(method='POST', action='/find')
+        input.form-control.form-control-solid.mr-sm-2(type='search', name='keyword', placeholder='Search for miracles', aria-label='Search')
+
+    //- Navbar Items
+    ul.navbar-nav.align-items-center.ml-auto
+
+        li.nav-item.button.no-caret.mr-3
+            button.btn.btn-primary.btn-sm(type='button', data-toggle="modal" data-target="#shareModal") Share a miracle
+        
+        li.nav-item.button.no-caret.mr-3
+            button.btn.btn-secondary.btn-sm(type='button', data-toggle="modal" data-target="#giveFeedback") Give feedback
