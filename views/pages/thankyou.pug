@@ -1,0 +1,35 @@
+extends ../layouts/miracles-layout.pug
+
+block config
+    - var bodyClass = 'nav-fixed'
+    - var pageTitle = 'Thank you'
+    - var pageIcon = 'activity'
+    - var sidenavStyle = 'sidenav-light'
+    - var topnavStyle = 'navbar-light bg-white'
+    - var footerStyle = 'footer-light'
+
+block content
+
+    .container-fluid.mt-5
+ 
+        if status == 'success'
+            .alert.alert-success.alert-dismissible.fade.show(role='alert')
+                h5.alert-heading Success!
+                | Thanks for sharing your #{type}. 
+                a.alert-link(href='/miracles') Go back
+
+        else if status == 'failure'
+            .alert.alert-danger.alert-dismissible.fade.show(role='alert')
+                h5.alert-heading Error!
+                | There were issues posting your #{type}! 
+                if type == 'miracle'
+                    a.alert-link(href='javascript:void(0);', data-toggle="modal" data-target="#shareModal") Try again.
+                else
+                    a.alert-link(href='javascript:void(0);', data-toggle="modal" data-target="#giveFeedback") Try again.
+
+
+
+               
+
+        
+append scripts

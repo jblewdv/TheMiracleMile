@@ -1,0 +1,32 @@
+{
+  "name": "app",
+  "description": "To connect those who have seen God’s work and those who need a miracle to be inspired and inspire others in visualizing the Lord’s power.",
+  "homepage": "",
+  "author": "Joshua Blew <jblew.business@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jblewdv/SeeGodWork.git"
+  },
+  "version": "1.8.0",
+  "private": true,
+  "scripts": {
+    "start": "pm2-runtime start ecosystem.config.js --env production"
+  },
+  "dependencies": {
+    "assert": "^2.0.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "dotenv": "^8.2.0",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "moment": "^2.25.3",
+    "mongodb": "^3.5.7",
+    "morgan": "~1.9.1",
+    "node-cache": "^5.1.0",
+    "pm2": "^4.4.0",
+    "pug": "^2.0.4"
+  },
+  "engines": {
+    "node": "12.x"
+  }
+}

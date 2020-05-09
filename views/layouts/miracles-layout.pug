@@ -1,0 +1,81 @@
+doctype html
+
+block config
+    - var footerStyle = "footer-light"
+
+html(lang='en')
+
+    head
+
+        include includes/head/meta.pug
+        include includes/head/title.pug
+        include includes/head/css.pug
+        include includes/head/icons.pug
+
+    body(class=bodyClass)
+
+        include includes/navigation/topnav.pug
+
+        #layoutSidenav
+            
+            #layoutSidenav_nav
+
+                include includes/navigation/sidenav.pug
+
+            #layoutSidenav_content
+                
+                main
+
+                    block content
+
+                    .modal.fade#shareModal(tabindex='-1', role='dialog', aria-labelledby='shareModal', aria-hidden='true')
+                        .modal-dialog.modal-lg(role='document')
+                            .modal-content
+                                .modal-header
+                                    h5.modal-title Share a miracle
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                        span(aria-hidden='true') ×
+                                .modal-body
+                                    form(method='POST', action='/share')
+                                        .form-group
+                                            label(for='miracleType')
+                                                span.badge.badge-primary.mr-2 What type of miracle are you sharing?
+                                            select#miracleType.form-control(name='miracleType' required)
+                                                option(value='') Please choose one...
+                                                option(value='Relationships saved') Relationship saved
+                                                option(value='Sins overcame') Sin overcame
+                                                option(value='Mental issues healed') Mental health healed
+                                                option(value='Physical issues healed') Physical health healed
+                                        .form-group
+                                            label(for='miracleStory')
+                                                span.badge.badge-primary.mr-2 Share the whole story
+                                            textarea#miracleStory.form-control(rows='3', placeholder='Your story...', name='miracleStory' required)
+                                        .modal-footer
+                                            button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                                            button.btn.btn-primary(type='submit') Share
+
+
+                    .modal.fade#giveFeedback(tabindex='-1', role='dialog', aria-labelledby='giveFeedback', aria-hidden='true')
+                        .modal-dialog.modal-lg(role='document')
+                            .modal-content
+                                .modal-header
+                                    h5.modal-title Give me your feedback!
+                                    button.close(type='button', data-dismiss='modal', aria-label='Close')
+                                        span(aria-hidden='true') ×
+                                .modal-body
+                                    form(method='POST', action='/feedback')
+                                        .form-group
+                                            label(for='feedbackText')
+                                                span.badge.badge-secondary.mr-2 Your feedback
+                                            textarea#feedbackText.form-control(rows='3', placeholder='What do you think...', name='feedbackText' required)
+                                        .modal-footer
+                                            button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+                                            button.btn.btn-primary(type='submit') Submit
+
+                                
+
+                                
+                                                                                
+                include includes/footer.pug
+
+        include includes/scripts.pug

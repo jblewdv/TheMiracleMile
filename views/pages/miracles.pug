@@ -1,0 +1,128 @@
+extends ../layouts/miracles-layout.pug
+
+block config
+    - var bodyClass = 'nav-fixed'
+    - var pageTitle = 'Miracles'
+    - var pageIcon = 'activity'
+    - var sidenavStyle = 'sidenav-light'
+    - var topnavStyle = 'navbar-light bg-white'
+    - var footerStyle = 'footer-light'
+
+block content
+
+    .container-fluid.mt-5
+        .alert.alert-primary.alert-icon(role='alert')
+            button.close(type='button', data-dismiss='alert', aria-label='Close')
+                span(aria-hidden='true') ×
+            .alert-icon-aside
+                i(data-feather='send')
+            .alert-icon-content
+                h6.alert-heading Feedback
+                | Thanks for checking out the site! Please give me your feedback as I'm still developing it actively :)
+
+        .d-flex.justify-content-between.align-items-sm-center.flex-column.flex-sm-row.mb-4
+            .mr-4.mb-3.mb-sm-0
+                if search
+                    a(href='/miracles').h1.mb-0 Miracles
+                        span.badge.badge-primary.ml-2 #{searchTerm}                
+                else
+                    h1.mb-0 Miracles
+                .small
+                    span.font-weight-500.text-primary #{dateInfo[0]}
+                    |  &middot; #{dateInfo[1]} &middot; #{dateInfo[2]}
+        
+        .row
+
+            .col-xl-3.col-md-6.mb-4
+
+                .card.border-top-0.border-bottom-0.border-right-0.border-left-lg.border-blue
+                    .card-body
+                        .d-flex.align-items-center
+                            .flex-grow-1
+                                .small.font-weight-bold.text-blue.mb-1 Relationships saved
+                                .h5 #{typeCounts[0]}
+                            .ml-2
+                                i.fas.fa-users.fa-2x.text-gray-400
+                               
+            .col-xl-3.col-md-6.mb-4
+
+                .card.border-top-0.border-bottom-0.border-right-0.border-left-lg.border-purple.h-100
+                    .card-body
+                        .d-flex.align-items-center
+                            .flex-grow-1
+                                .small.font-weight-bold.text-purple.mb-1 Sins overcame
+                                .h5 #{typeCounts[1]}
+                            .ml-2
+                                i.fas.fa-award.fa-2x.text-gray-400
+            
+            .col-xl-3.col-md-6.mb-4
+
+                .card.border-top-0.border-bottom-0.border-right-0.border-left-lg.border-cyan.h-100
+                    .card-body
+                        .d-flex.align-items-center
+                            .flex-grow-1
+                                .small.font-weight-bold.text-cyan.mb-1 Mental issues healed
+                                .h5 #{typeCounts[2]}
+                            .ml-2
+                                i.fas.fa-smile.fa-2x.text-gray-400
+
+            .col-xl-3.col-md-6.mb-4
+
+                .card.border-top-0.border-bottom-0.border-right-0.border-left-lg.border-pink.h-100
+                    .card-body
+                        .d-flex.align-items-center
+                            .flex-grow-1
+                                .small.font-weight-bold.text-pink.mb-1 Physical issues healed
+                                .h5 #{typeCounts[3]}
+                            .ml-2
+                                i.fas.fa-heart.fa-2x.text-gray-400
+
+        hr
+
+        if miracles.length == 0
+            .alert.text-center.alert-info.alert-dismissible.fade.show(role='alert')
+                h5.alert-heading Uh oh! The road doesn't go that far.
+                | There are no miracles with that keyword. 
+                a.alert-link(href='/') Please try again :)
+        
+        else
+            .card-columns
+                each miracle in miracles
+                    if miracle.type == "Relationships saved"
+                        .card.bg-primary.o-visible.mb-4
+                            .card-body
+                                h5.text-white.text-center
+                                    | #{miracle.story}
+
+                            .card-footer.bg-transparent.pt-0.border-0.text-right
+                                p.text-white-50 
+                                    | #{miracle.created.toString().slice(0,16)}
+                    if miracle.type == "Sins overcame"
+                        .card.bg-secondary.o-visible.mb-4
+                            .card-body
+                                h5.text-white.text-center
+                                    | #{miracle.story}
+
+                            .card-footer.bg-transparent.pt-0.border-0.text-right
+                                p.text-white-50 
+                                    | #{miracle.created.toString().slice(0,16)}
+                    if miracle.type == "Mental issues healed"
+                        .card.bg-cyan.o-visible.mb-4
+                            .card-body
+                                h5.text-white.text-center
+                                    | #{miracle.story}
+
+                            .card-footer.bg-transparent.pt-0.border-0.text-right
+                                p.text-white-50 
+                                    | #{miracle.created.toString().slice(0,16)}
+                    if miracle.type == "Physical issues healed"
+                        .card.bg-pink.o-visible.mb-4
+                            .card-body
+                                h5.text-white.text-center
+                                    | #{miracle.story}
+
+                            .card-footer.bg-transparent.pt-0.border-0.text-right
+                                p.text-white-50 
+                                    | #{miracle.created.toString().slice(0,16)}
+
+append scripts

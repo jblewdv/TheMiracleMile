@@ -1,0 +1,22 @@
+extends ../layouts/error-layout.pug
+
+block config
+    - var pageTitle = '404 Error'
+    - var footerStyle = 'footer-light'
+
+block content
+    .container
+        .row.justify-content-center
+            .col-lg-6
+                .text-center.mt-4
+                    img.mb-4.img-error(src='assets/img/drawkit/color/drawkit-error-404.svg')
+                    p.lead This requested URL was not found on this server.
+                    a.text-arrow-icon(href='/')
+                        i.ml-0.mr-1(data-feather='arrow-left')
+                        | Return to Dashboard
+
+                    hr
+                    
+                    h1= message
+                    h2= error.status
+                    pre #{error.stack}
