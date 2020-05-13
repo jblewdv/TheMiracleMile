@@ -88,6 +88,7 @@ block content
         else
             .card-columns
                 each miracle in miracles
+                    
                     if miracle.type == "Relationships saved"
                         .card.bg-primary.o-visible.mb-4
                             .card-body
@@ -97,6 +98,7 @@ block content
                             .card-footer.bg-transparent.pt-0.border-0.text-right
                                 p.text-white-50 
                                     | #{miracle.created.toString().slice(0,16)}
+                    
                     if miracle.type == "Sins overcame"
                         .card.bg-secondary.o-visible.mb-4
                             .card-body
@@ -106,6 +108,7 @@ block content
                             .card-footer.bg-transparent.pt-0.border-0.text-right
                                 p.text-white-50 
                                     | #{miracle.created.toString().slice(0,16)}
+                    
                     if miracle.type == "Mental issues healed"
                         .card.bg-cyan.o-visible.mb-4
                             .card-body
@@ -115,8 +118,19 @@ block content
                             .card-footer.bg-transparent.pt-0.border-0.text-right
                                 p.text-white-50 
                                     | #{miracle.created.toString().slice(0,16)}
+                    
                     if miracle.type == "Physical issues healed"
                         .card.bg-pink.o-visible.mb-4
+                            .card-body
+                                h5.text-white.text-center
+                                    | #{miracle.story}
+
+                            .card-footer.bg-transparent.pt-0.border-0.text-right
+                                p.text-white-50 
+                                    | #{miracle.created.toString().slice(0,16)}
+                    
+                    if miracle.type == "Other"
+                        .card.bg-teal.o-visible.mb-4
                             .card-body
                                 h5.text-white.text-center
                                     | #{miracle.story}
