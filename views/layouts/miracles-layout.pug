@@ -38,8 +38,7 @@ html(lang='en')
                                 .modal-body
                                     form(method='POST', action='/share')
                                         .form-group
-                                            label(for='miracleType')
-                                                span.badge.badge-primary.mr-2 What type of miracle are you sharing?
+                                            label.text-primary(for='miracleType') What type of miracle are you sharing?
                                             select#miracleType.form-control(name='miracleType' required)
                                                 option(value='') Please choose one...
                                                 option(value='Relationships saved') Relationship saved
@@ -48,8 +47,7 @@ html(lang='en')
                                                 option(value='Physical issues healed') Physical health healed
                                                 option(value='Other') Other
                                         .form-group
-                                            label(for='miracleStory')
-                                                span.badge.badge-primary.mr-2 Share the whole story
+                                            label.text-primary(for='miracleStory') Share the whole story
                                             textarea#miracleStory.form-control(rows='3', placeholder='Your story...', name='miracleStory' required)
                                         .modal-footer
                                             button.btn.btn-secondary(type='button', data-dismiss='modal') Close
@@ -66,12 +64,14 @@ html(lang='en')
                                 .modal-body
                                     form(method='POST', action='/feedback')
                                         .form-group
-                                            label(for='feedbackText')
-                                                span.badge.badge-secondary.mr-2 Your feedback
-                                            textarea#feedbackText.form-control(rows='3', placeholder='What do you think...', name='feedbackText' required)
+                                            label.text-primary(for='feedbackFrom') Email address
+                                            input#feedbackFrom.form-control(type='email', name='feedbackFrom' placeholder='name@example.com' required)
+                                        .form-group
+                                            label.text-primary(for='feedbackText') Feedback
+                                            textarea#feedbackText.form-control(rows='3', placeholder='What\'s on your mind?', name='feedbackText' required)
                                         .modal-footer
                                             button.btn.btn-secondary(type='button', data-dismiss='modal') Close
-                                            button.btn.btn-primary(type='submit') Submit
+                                            button.btn.btn-primary(type='submit') Share
 
                                 
 
