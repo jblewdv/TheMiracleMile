@@ -1,13 +1,13 @@
 {
-  "name": "TheMiracleMile",
+  "name": "themiraclemile",
   "description": "To connect those who have seen God’s work and those who need a miracle to be inspired and inspire others in visualizing the Lord’s power.",
-  "homepage": "miraclemileapp.com",
-  "author": "Joshua Blew <jblew.business@gmail.com>",
+  "homepage": "https://themiraclemile.herokuapp.com/home",
+  "author": "Joshua Blew <miraclemileapp@gmail.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jblewdv/SeeGodWork.git"
+    "url": "https://github.com/jblewdv/TheMiracleMile.git"
   },
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
   "scripts": {
     "start": "pm2-runtime start ecosystem.config.js --env production"
