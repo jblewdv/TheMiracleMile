@@ -39,7 +39,8 @@ html(lang='en')
                                     form(method='POST', action='/share')
                                         .form-group
                                             label.text-primary(for='miracleType') How has the Lord touched your life or someone you know?
-                                            select#miracleType.form-control(name='miracleType' required)
+                                            
+                                            select#miracleType.form-control.form-control-solid(name='miracleType' required)
                                                 option(value='') Please choose one...
                                                 option(value='Relationships saved') Relationship saved
                                                 option(value='Sins overcame') Sin overcame
@@ -48,7 +49,9 @@ html(lang='en')
                                                 option(value='Other') Other
                                         .form-group
                                             label.text-primary(for='miracleStory') Share the whole story
-                                            textarea#miracleStory.form-control(rows='3', placeholder='Your story...', name='miracleStory' required)
+                                            textarea#miracleStory.form-control.form-control-solid(rows='3', placeholder='Your story...', name='miracleStory' required)
+                                            small#miracleStoryHelp.form-text.text-muted Your miracle is 100% anonymous.
+
                                         .modal-footer
                                             button.btn.btn-secondary(type='button', data-dismiss='modal') Close
                                             button.btn.btn-primary(type='submit') Share
@@ -65,10 +68,10 @@ html(lang='en')
                                     form(method='POST', action='/feedback')
                                         .form-group
                                             label.text-primary(for='feedbackFrom') Email address
-                                            input#feedbackFrom.form-control(type='email', name='feedbackFrom' placeholder='name@example.com' required)
+                                            input#feedbackFrom.form-control.form-control-solid(type='email', name='feedbackFrom' placeholder='name@example.com' required)
                                         .form-group
                                             label.text-primary(for='feedbackText') Feedback
-                                            textarea#feedbackText.form-control(rows='3', placeholder='What\'s on your mind?', name='feedbackText' required)
+                                            textarea#feedbackText.form-control.form-control-solid(rows='3', placeholder='What\'s on your mind?', name='feedbackText' required)
                                         .modal-footer
                                             button.btn.btn-secondary(type='button', data-dismiss='modal') Close
                                             button.btn.btn-primary(type='submit') Share
