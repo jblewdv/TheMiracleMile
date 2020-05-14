@@ -46,7 +46,7 @@ async function miracleCache(req, res, next) {
 		var miracles = await dashboardUtils.getDashboardMiracles(db, 100);
 
 		var success = cache.mset([
-			{ key: "dateInfo", val: [moment().format("dddd"), moment().format("MMMM Do, YYYY"), moment().format("h:mm A")] },
+			{ key: "dateInfo", val: [moment().format("dddd"), moment().format("MMMM Do, YYYY")] },
 			{ key: "typeCounts", val: typeCounts },
 			{ key: "miracles", val: miracles }
 		]);
