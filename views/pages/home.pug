@@ -23,13 +23,13 @@ block content
                             | Check it out
                             i.ml-1(data-feather='arrow-right')
                     .col.d-none.d-md-block.text-right.pt-3
-                        img.img-fluid.mt-n5(src='assets/img/homepage/heartworld.svg', style='max-width: 20rem;')
+                        img.img-fluid.mt-n5(src='assets/img/homepage/heartworld.svg', style='max-width: 17rem;')
         
 
         .row
            
             .col-md-6
-                .card.card-icon
+                a(href='/miracles').card.card-icon.card.lift
                     .row.no-gutters
                         .col-auto.card-icon-aside.bg-primary
                             img(src='assets/img/homepage/search.svg', heigth='54px', width='54px')
@@ -38,12 +38,15 @@ block content
                             .card-body.py-5
                                 h5.card-title Find miracles
                                 p.card-text
-                                    | Read stories of how the Lord has touched people's lives. Grow your spiritual inspiration by visualizing His power or simply find comfort in His work.
+                                    | Read stories of how the Lord has touched people's lives. Grow your spiritual 
+                                    | inspiration by visualizing His power or simply find comfort in His work.
+                            .card-footer.small.text-dark Click to start finding miracles!
+
 
             
 
             .col-md-6
-                .card.card-icon
+                a(href='javascript:void(0);', data-toggle="modal" data-target="#shareModal").card.card-icon.card.lift
                     .row.no-gutters
                         .col-auto.card-icon-aside.bg-primary
                             img(src='assets/img/homepage/send.svg', heigth='54px', width='54px')
@@ -52,6 +55,8 @@ block content
                             .card-body.py-5
                                 h5.card-title Share miracles
                                 p.card-text
-                                    | Has the Lord touched your life or someone you know? Help others by sharing your story and spreading hope to those that need it most.
+                                    | Has the Lord moved in your life or someone you know? Inspire those that
+                                    | need it most by sharing your story anonymously and spreading hope.
+                            .card-footer.small.text-dark Click to start sharing miracles!
 
 append scripts
