@@ -13,23 +13,34 @@ block content
     .container-fluid.mt-5
  
         if status == 'success'
-            .alert.alert-success.alert-dismissible.fade.show(role='alert')
-                h5.alert-heading Success!
-                | Thanks for sharing your #{type}. 
-                a.alert-link(href='/miracles') Go back
 
+            .alert.alert-primary.border-0.mb-4.mt-5.px-md-5.text-center
+                img.img-fluid.mt-n5(src='/assets/img/thankyou/success.svg', style='max-width: 7rem; padding-top: 3rem; padding-bottom: 1rem;')
+                h2.text-primary Awesome, success! Thanks for sharing your #{type}.
+                p.text-dark If you haven't already, please share your email address so I can keep in touch with you as The Miracle Mile grows.
+
+                #mc_embed_signup
+                    form#mc-embedded-subscribe-form.validate(action='https://herokuapp.us18.list-manage.com/subscribe/post?u=7a10ca31d51a453ed2c56e49d&id=1de60ce086' method='post' name='mc-embedded-subscribe-form' target='_blank' novalidate='')
+                        #mc_embed_signup_scroll
+                        input#mce-EMAIL.email(type='email' value='' name='EMAIL' placeholder='Email address' required='')
+                        div(style='position: absolute; left: -5000px;' aria-hidden='true')
+                            input(type='text' name='b_7a10ca31d51a453ed2c56e49d_1de60ce086' tabindex='-1' value='')
+                        .clear
+                            input#mc-embedded-subscribe.button(type='submit' value='Share' name='subscribe')
+
+                a.alert-link.text-dark(href='/miracles') See your miracle!
+
+                            
         else if status == 'failure'
-            .alert.alert-danger.alert-dismissible.fade.show(role='alert')
-                h5.alert-heading Error!
-                | There were issues posting your #{type}! 
+
+            .alert.alert-danger.border-0.mb-4.mt-5.px-md-5.text-center
+                img.img-fluid.mt-n5(src='/assets/img/thankyou/failure.svg', style='max-width: 7rem; padding-top: 3rem; padding-bottom: 1rem;')
+                h2.text-red Yikes, there were issues posting your #{type}! 
+
                 if type == 'miracle'
-                    a.alert-link(href='javascript:void(0);', data-toggle="modal" data-target="#shareModal") Try again.
+                    a.alert-link.text-dark(href='javascript:void(0);', data-toggle="modal" data-target="#shareModal") Try again
                 else
-                    a.alert-link(href='javascript:void(0);', data-toggle="modal" data-target="#giveFeedback") Try again.
+                    a.alert-link.text-dark(href='javascript:void(0);', data-toggle="modal" data-target="#giveFeedback") Try again
 
 
-
-               
-
-        
 append scripts

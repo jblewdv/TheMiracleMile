@@ -134,6 +134,7 @@ router.get('/thankyou/:type/:status', function(req, res, next) {
 
 router.post('/feedback', async function(req, res, next) {
 	var newFeedback = {
+		'from': req.body.feedbackFrom,
 		'text': req.body.feedbackText,
 		'created': new Date()
 	};
