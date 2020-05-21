@@ -7,10 +7,10 @@ require('dotenv').config()
 /* load modules */
 const moment = require('moment');
 const assert = require('assert');
+const geoip = require('geoip-lite');
 const MongoClient = require('mongodb').MongoClient;
 const NodeCache = require('node-cache');
 const cache = new NodeCache();
-const geoip = require('geoip-lite');
 
 /* load utilities */
 const mongoUtils = require('../utils/mongo');
@@ -35,6 +35,24 @@ MongoClient.connect(MONGO_URL, { useUnifiedTopology: true }, function (err, clie
 	MIDDLEWARE
 	----------
 */
+
+function recordGeo(req, res, next) {
+	if (req.session.geoSaved != true) {
+		var geo = geoip.lookup(req.clientIp);
+		geo['ip'] = req.clientIp;
+
+		geoUtils.addVisitorLocation(db, geo).then((status, err) => {
+			if (err) console.log('Problem saving new visitor location')
+			if (status === true) {
+				req.session.geoSaved = true;
+				req.session.save(function(err) {
+					// session saved
+				});
+			}
+		})
+	}
+	next();
+}
 
 async function miracleCache(req, res, next) {
 	if ((cache.get("miracleInfoSaved") != undefined || false) && cache.get("justShared") == false) {
@@ -76,12 +94,12 @@ router.get('/', function(req, res, next) {
 });
 
 
-router.get('/home', async function(req, res, next) {
+router.get('/home', recordGeo, async function(req, res, next) {
 	res.render('pages/home');
 });
 
 
-router.get('/miracles', miracleCache, async function (req, res, next) {
+router.get('/miracles', recordGeo, miracleCache, async function (req, res, next) {
 	res.render('pages/miracles', {
 		dateInfo: res.locals.dateInfo,
 		typeCounts: res.locals.typeCounts,
@@ -148,12 +166,12 @@ router.post('/feedback', async function(req, res, next) {
 });
 
 
-router.get('/founder', function(req, res, next) {
+router.get('/founder', recordGeo, function(req, res, next) {
 	res.render('pages/founder');
 });
 
 
-router.get('/contact', function(req, res, next) {
+router.get('/contact', recordGeo, function(req, res, next) {
 	res.render('pages/contact');
 });
 
