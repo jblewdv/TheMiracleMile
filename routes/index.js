@@ -10,11 +10,13 @@ const assert = require('assert');
 const MongoClient = require('mongodb').MongoClient;
 const NodeCache = require('node-cache');
 const cache = new NodeCache();
+const geoip = require('geoip-lite');
 
 /* load utilities */
 const mongoUtils = require('../utils/mongo');
 const dashboardUtils = require('../utils/dashboard');
 const feedbackUtils = require('../utils/feedback');
+const geoUtils = require('../utils/geo');
 
 /* connect to database client */
 var db;
@@ -26,12 +28,6 @@ MongoClient.connect(MONGO_URL, { useUnifiedTopology: true }, function (err, clie
 	db = client.db(DB_NAME);
 	console.log("Connected successfully to server");
 });
-
-
-
-var geoip = require('geoip-lite');
-
-
 
 
 /*
@@ -79,15 +75,12 @@ router.get('/', function(req, res, next) {
 	res.redirect('/home');
 });
 
-router.get('/test', function(req, res, next) {
-	const ip = req.clientIp;
-	var geo = geoip.lookup(ip);
 
-    res.end(ip, geo);
-});
-
-
-router.get('/home', function(req, res, next) {
+router.get('/home', async function(req, res, next) {
+	var geo = geoip.lookup(req.clientIp);
+	geo["visitor"] = true;
+	console.log(geo)
+	await geoUtils.insertNewGeo(db, geo, req.clientIp)
 	res.render('pages/home');
 });
 
