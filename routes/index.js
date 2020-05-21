@@ -77,10 +77,6 @@ router.get('/', function(req, res, next) {
 
 
 router.get('/home', async function(req, res, next) {
-	var geo = geoip.lookup(req.clientIp);
-	geo["visitor"] = true;
-	console.log(geo)
-	await geoUtils.insertNewGeo(db, geo, req.clientIp)
 	res.render('pages/home');
 });
 
