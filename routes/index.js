@@ -28,6 +28,12 @@ MongoClient.connect(MONGO_URL, { useUnifiedTopology: true }, function (err, clie
 });
 
 
+
+var geoip = require('geoip-lite');
+
+
+
+
 /*
 	----------
 	MIDDLEWARE
@@ -71,6 +77,13 @@ async function miracleCache(req, res, next) {
 
 router.get('/', function(req, res, next) {
 	res.redirect('/home');
+});
+
+router.get('/test', function(req, res, next) {
+	const ip = req.clientIp;
+	var geo = geoip.lookup(ip);
+
+    res.end(ip, geo);
 });
 
 
