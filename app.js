@@ -4,13 +4,30 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var requestIp = require('request-ip');
+var session = require('express-session');
+var MongoDBStore = require('connect-mongodb-session')(session);
 
 var indexRouter = require('./routes/index');
-// var usersRouter = require('./routes/users');
 
 var app = express();
 
-app.use(requestIp.mw())
+// session stuff
+var MONGO_URL = process.env.MONGO_URL;
+var DB_NAME = process.env.DB_NAME;
+
+app.use(session({
+  secret: 'GODrocks',
+  resave: false,
+  saveUninitialized: true,
+  store: new MongoDBStore({
+    uri: MONGO_URL,
+    databaseName: DB_NAME,
+    collection: 'sessions'
+  }),
+  cookie: { 
+    maxAge: null 
+  }
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -24,6 +41,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 // app.use('/users', usersRouter);
+
+// IP address middleware
+app.use(requestIp.mw())
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
